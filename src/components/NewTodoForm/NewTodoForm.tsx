@@ -23,7 +23,12 @@ export const NewTodoForm: React.FC<Props> = ({ addTodo, setNewError }) => {
   };
 
   return (
-    <form onSubmit={() => createTodo(query)}>
+    <form
+      onSubmit={event => {
+        event.preventDefault();
+        createTodo(query);
+      }}
+    >
       <input
         autoFocus
         data-cy="NewTodoField"
