@@ -63,11 +63,11 @@ export const App: React.FC = () => {
     return Math.max(...IDArray);
   };
 
-  const handleDelete = (idToDelete: number) => {
+  const handleDeleteTodo = (idToDelete: number) => {
     setTodos(() => todos.filter(todo => todo.id !== idToDelete));
   };
 
-  const handleDeleteAllCompletedTodo = () => {
+  const handleDeleteCompletedTodo = () => {
     setTodos(() => todos.filter(todo => !todo.completed));
   };
 
@@ -96,7 +96,7 @@ export const App: React.FC = () => {
     );
   };
 
-  const handleChangeAllIsCompleted = () => {
+  const handleChangeAllIsComplated = () => {
     if (todos.every(todo => todo.completed)) {
       setTodos(
         todos.map(todo => {
@@ -139,7 +139,7 @@ export const App: React.FC = () => {
       <div className="todoapp__content">
         <Header
           todos={todos}
-          changeAllIsComplated={handleChangeAllIsCompleted}
+          changeAllIsComplated={handleChangeAllIsComplated}
           addTodo={handleAddTodo}
           setNewError={changeErrorMesssage}
         />
@@ -148,7 +148,7 @@ export const App: React.FC = () => {
           <>
             <TodoList
               todos={filteredTodos}
-              deleteTodo={handleDelete}
+              deleteTodo={handleDeleteTodo}
               changeCompleted={handleChangeCompleted}
               changeTodo={handleChangeTodo}
             />
@@ -157,7 +157,7 @@ export const App: React.FC = () => {
               todos={todos}
               filterBy={filterBy}
               setFilterBy={setFilterBy}
-              deleteCompleted={handleDeleteAllCompletedTodo}
+              deleteCompleted={handleDeleteCompletedTodo}
             />
           </>
         )}
